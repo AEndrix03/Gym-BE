@@ -1,19 +1,18 @@
 package it.aredegalli.gym.model.anagrafica;
 
+import it.aredegalli.gym.dto.anagrafica.DistrettoDto;
+import it.aredegalli.gym.dto.anagrafica.IAnagrafica;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "ana_distretto")
 @Entity
-public class AnaDistretto {
+public class AnaDistretto implements IAnagrafica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +21,13 @@ public class AnaDistretto {
 
     @Column(name = "nome")
     private String nome;
+
+    @Override
+    public DistrettoDto toAnagrafica() {
+        return DistrettoDto.builder()
+                .id(this.id)
+                .nome(this.nome)
+                .build();
+    }
 
 }

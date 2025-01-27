@@ -1,5 +1,7 @@
 package it.aredegalli.gym.model.anagrafica;
 
+import it.aredegalli.gym.dto.anagrafica.IAnagrafica;
+import it.aredegalli.gym.dto.anagrafica.MuscoloDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "ana_muscolo")
 @Entity
-public class AnaMuscolo {
+public class AnaMuscolo implements IAnagrafica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +22,11 @@ public class AnaMuscolo {
     @Column(name = "nome")
     private String nome;
 
+    @Override
+    public MuscoloDto toAnagrafica() {
+        return MuscoloDto.builder()
+                .id(this.id)
+                .nome(this.nome)
+                .build();
+    }
 }
