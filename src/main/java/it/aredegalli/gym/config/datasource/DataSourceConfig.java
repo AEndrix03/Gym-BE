@@ -9,14 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import javax.sql.DataSource;
 
 @Configuration
-@ConfigurationProperties(prefix = "spring.datasource")
 public class DataSourceConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        return DataSourceBuilder.create()
-                .type(HikariDataSource.class)
-                .build();
+    @Bean(name = "gymDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource gymDataSource() {
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
-
 }

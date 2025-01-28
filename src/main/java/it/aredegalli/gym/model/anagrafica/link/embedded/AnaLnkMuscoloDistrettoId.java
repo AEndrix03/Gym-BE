@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Embeddable
-public class AnaLnkMuscoloDistrettoId  implements Serializable {
+public class AnaLnkMuscoloDistrettoId implements Serializable {
 
     @Column(name = "id_ana_muscolo")
     private Long idAnaMuscolo;

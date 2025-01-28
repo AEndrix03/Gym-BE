@@ -1,7 +1,5 @@
 package it.aredegalli.gym.model.personale;
 
-import it.aredegalli.commons.model.SecUser;
-import it.aredegalli.commons.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "scheda")
+@Table(name = "scheda", schema = "public")
 @Entity
 public class Scheda {
 
@@ -39,8 +37,7 @@ public class Scheda {
     @Column(name = "data_eliminazione")
     private LocalDateTime dataEliminazione;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user")
-    private SecUser user;
+    @Column(name = "id_user")
+    private Long idUser;
 
 }

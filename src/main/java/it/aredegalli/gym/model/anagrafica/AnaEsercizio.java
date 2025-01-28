@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ana_esercizio")
+@Table(name = "ana_esercizio", schema = "public")
 @Entity
 public class AnaEsercizio implements IAnagrafica {
 
