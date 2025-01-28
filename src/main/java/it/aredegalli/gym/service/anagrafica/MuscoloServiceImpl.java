@@ -18,7 +18,7 @@ public class MuscoloServiceImpl implements MuscoloService {
     @Override
     public List<MuscoloDto> getMuscoli(MuscoloSearchDto searchDto) {
         return this.muscoloRepository.findAnaMuscoli(
-                        searchDto != null ? searchDto.getIdDistretti() : List.of())
+                        searchDto != null && searchDto.getIdDistretti() != null && !searchDto.getIdDistretti().isEmpty() ? searchDto.getIdDistretti() : null)
                 .stream()
                 .map(AnaMuscolo::toAnagrafica)
                 .toList();

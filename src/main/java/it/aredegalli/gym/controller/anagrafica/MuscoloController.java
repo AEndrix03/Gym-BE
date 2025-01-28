@@ -6,8 +6,8 @@ import it.aredegalli.gym.service.anagrafica.MuscoloService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class MuscoloController {
     private MuscoloService muscoloService;
 
     @GetMapping()
-    public List<MuscoloDto> getMuscoli(@RequestParam(required = false) MuscoloSearchDto searchDto) {
+    public List<MuscoloDto> getMuscoli(@RequestBody(required = false) MuscoloSearchDto searchDto) {
         log.info("getMuscoli");
         return this.muscoloService.getMuscoli(searchDto);
     }

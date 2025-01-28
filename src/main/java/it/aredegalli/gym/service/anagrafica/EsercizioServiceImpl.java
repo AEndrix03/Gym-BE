@@ -18,8 +18,8 @@ public class EsercizioServiceImpl implements EsercizioService {
     @Override
     public List<EsercizioDto> getEsercizi(EsercizioSearchDto searchDto) {
         return this.esercizioRepository.findAnaEserciziByIdMuscoli(
-                        searchDto != null ? searchDto.getIdMuscoli() : null,
-                        searchDto != null ? searchDto.getIdDistretti() : null)
+                        searchDto != null && searchDto.getIdMuscoli() != null && !searchDto.getIdMuscoli().isEmpty() ? searchDto.getIdMuscoli() : null,
+                        searchDto != null && searchDto.getIdDistretti() != null && !searchDto.getIdDistretti().isEmpty() ? searchDto.getIdDistretti() : null)
                 .stream()
                 .map(AnaEsercizio::toAnagrafica)
                 .toList();

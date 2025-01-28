@@ -6,8 +6,8 @@ import it.aredegalli.gym.service.anagrafica.EsercizioService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class EsercizioController {
     private EsercizioService esercizioService;
 
     @GetMapping()
-    public List<EsercizioDto> getEsercizi(@RequestParam(required = false) EsercizioSearchDto searchDto) {
+    public List<EsercizioDto> getEsercizi(@RequestBody(required = false) EsercizioSearchDto searchDto) {
         log.info("getEsercizi");
         return this.esercizioService.getEsercizi(searchDto);
     }
